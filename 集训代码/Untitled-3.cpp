@@ -1,33 +1,33 @@
 #include <iostream>
-#include <string.h>
 #include <algorithm>
+#include <string.h>
 
 using namespace std;
 
-struct Queue{
-    int i;
-    int j;
-    int mid;
-}queue[100];
+struct dep{
+	int x;
+	int y;
+}deps[1000];
 
-bool Compare(const Queue &a,const Queue &b){
-    return a.i<b.i;
+bool Compare(const dep &a,const dep &b){
+	return a.x > b.x;
 }
 
 int main(){
-    int s;
-    cin>>s;
-    int j,k;
-    for(int i=0;i<s;i++){
-        cin>>j>>k;
-        queue[i].i=j;
-        queue[i].j=k;
-        queue[i].mid=k-j;
-    }
-    sort(queue,queue+s,Compare);
-    int sum=1;
-    for(int i=1;i<s;i++){
-    }
-
-   return 0;
+	int T;
+	cin >> T;
+	while(T--){
+		int n;
+		int line;
+		cin >> n;
+		bool flag = true;
+		memset( deps , 0 , sizeof(deps) );
+		for(int i = 0; i < n; i++){
+			cin >> deps[i].x >> deps[i].y;
+		}
+		sort(deps,deps + n,Compare);
+		if(flag) cout << "YES" <<endl;
+		else cout << "NO" <<endl;
+	}
+	return 0;
 }
