@@ -1,47 +1,45 @@
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
-int fa[1005];
-int n,m;
+int fa[100005];
+bool check;
+int a,b;
 
 void init(){
-    for(int i = 1 ; i <= n ; i++ ) fa[i] = i;
+    for(int i = 0;i < 100005 ; i++) fa[i] = i;
 }
 
 int getIn(int x){
-    
     if(fa[x] == x) return x;
     else return fa[x] = getIn(fa[x]);
-
 }
 
 void union_set(int x,int y){
-    int fx = getIn(x);
-    int fy = getIn(y);
-    if(fx != fy) fa[fy] = fx;
-    else return ;
+    int fx,fy;
+    fx = getIn(x);
+    fy = getIn(y);
+    if(check && fx != fy ) fa[fy] = fx;
+    else check = false;
 }
 
-
 int main(){
-    int T ;
-    cin >> T ;
-    while(T--){
-        cin >> n >> m;
+    while(1){
         init();
-        for(int i = 1 ; i <= m ; i++ ){
-            int a,b;
-            cin >> a >> b;
-            union_set( a , b );
+        check = true;
+        bool out = false;
+        while(1){
+        	scanf("%d%d",&a,&b);
+            if(a == -1 && b == -1) {
+                out = true;
+                break;
+            }
+            if(a == 0 && b == 0) break;
+            union_set(a,b);
         }
-
-        sort(fa + 1,fa + n + 1);
-        int sum = 1 ; 
-        for( int i = 1 ; i <= n - 1 ; i++ ) 
-            if(fa[i] !=fa[i + 1] ) sum++;
-        cout << sum << endl;
+        if(out) break;
+        if(check) cout << "YES" << endl;
+        else cout << "NO" << endl;
     }
 
     return 0;

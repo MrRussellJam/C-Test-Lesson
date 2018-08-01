@@ -35,4 +35,4 @@ int main(){
 //                 while(stream>>word){cout<<word<<endl;}
 //         }
 //         return 0;
-// }
+// } 

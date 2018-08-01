@@ -10,9 +10,9 @@ int n,m;
 
 bool dfs(int u){
     vis[u] = -1;
-    for(int i = 0; i <= vec[u].size();i++){
+    for(int i = 0; i < vec[u].size();i++){
         int v = vec[u][i];
-        if(vis[v] == -1) return fals e;
+        if(vis[v] == -1) return false;
         else if(!vis[v] && !dfs(v) ) return false;
     }
     vis[u] = 1;
